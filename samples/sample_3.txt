@@ -1,0 +1,12 @@
+#weight 7:
+ - Ana
+ - Alex
+ - Rob
+ - Ivan
+ - Yuri
+
+#weight 3:
+ - Yoseph
+ - Kanna
+ - Laura
+ - John

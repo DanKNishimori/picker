@@ -1,0 +1,12 @@
+#priority 1:
+ - Ana
+ - Alex
+ - Rob
+ - Ivan
+ - Yuri
+
+#priority 2:
+ - Yoseph
+ - Kanna
+ - Laura
+ - John
