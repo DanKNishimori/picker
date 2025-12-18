@@ -1,5 +1,7 @@
 use std::io::{self, Write};
 
+mod picker;
+
 pub fn run_repl() -> Result<(), io::Error> {
     let mut entries = Vec::<String>::new();
     println!("<< REPL Mode ; list your entries then type \"!go\" or \"!draw\" >>\n");
