@@ -16,12 +16,12 @@ fn main() {
         let picker = Picker::from_str(&content).expect("error somewhere");
 
         picker::print_result(picker.draw());
+    }
 
-        if was_gave_no_args {
-            std::io::stdin()
-                .read_line(&mut String::new())
-                .expect("error on reading the pause.");
-        }
+    if was_gave_no_args {
+        std::io::stdin()
+            .read_line(&mut String::new())
+            .expect("error on reading the pause.");
     }
 }
 
