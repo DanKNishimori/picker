@@ -1,20 +1,23 @@
 use std::io::{self, Write};
 
-mod picker;
+pub mod picker;
 
 pub fn run_repl() -> Result<(), io::Error> {
     let mut entries = Vec::<String>::new();
     println!("<< REPL Mode ; list your entries then type \"!go\" or \"!draw\" >>\n");
 
     loop {
-        let new_entry = get_input(">>> ").unwrap();
+        let new_entry = get_input(">>> ")?;
         if new_entry.trim() == "!go" || new_entry.trim() == "!draw" {
             break;
         }
-        entries.push(new_entry.trim().to_owned());
+        entries.push(new_entry.trim().to_string());
     }
 
-    println!("{entries:?}");
+    let weights = (0..entries.len()).map(|_| 1f32).collect();
+    let picker = picker::Picker::new(entries, weights);
+
+    println!("{:?}", picker.draw());
     Ok(())
 }
 

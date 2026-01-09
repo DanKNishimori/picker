@@ -1,12 +1,16 @@
-#weight 7:
- - Ana
- - Alex
- - Rob
- - Ivan
- - Yuri
+Raffle List of December for Youtube viewers #title
+Prize: special minecraft skin               #comment
 
-#weight 3:
- - Yoseph
- - Kanna
- - Laura
- - John
+- Subscribers group -                       #label
+Mildewed
+Assaultive
+ThunderHawk
+#...
+
+- Regulars group -                          #label
+Morello
+Roanokay
+Friezer (last winner)                       #ignore
+TommyGun
+Hedonist
+#...

@@ -1,11 +1,11 @@
-#priority 1:
+#weight 1
  - Ana
  - Alex
  - Rob
  - Ivan
- - Yuri
+ - Yuri #ignore
 
-#priority 2:
+#weight 10
  - Yoseph
  - Kanna
  - Laura
