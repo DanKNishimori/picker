@@ -5,7 +5,7 @@ A simple program to draw an item from a given list.
 ### File Mode
 You can draw an item from a file using by typing `picker list_file.txt`
 
-### REPL Mode (wip)
+### REPL Mode
 Another option is to just type `picker -r` or `picker --repl` and type directly your entries.
 
 ```
@@ -18,6 +18,8 @@ Another option is to just type `picker -r` or `picker --repl` and type directly 
 >>> !go
 
 ```
+
+And you can use `!load <file path>` to load a raffle file.
 
 ## Flags
 You can add some flags to the entries and change the probability of somthing being drawn. The flags indicate that if it isn't an entry or it should ignore the entry. 

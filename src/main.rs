@@ -17,9 +17,7 @@ fn main() {
         let content = fs::read_to_string(arg).expect("error on reading the entry.");
         let picker = Picker::from_str(&content).expect("error somewhere");
 
-        for _ in 0..1 {
-            println!("drawed: {}", picker.draw());
-        }
+        picker::print_result(picker.draw());
 
         // std::io::stdin()
         //     .read_line(&mut String::new())
