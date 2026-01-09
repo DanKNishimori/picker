@@ -5,9 +5,9 @@ use std::{
 
 pub mod picker;
 
-const HELP_MSG: &str = "!go or !draw
-!quit or !exit
-!load
+const HELP_MSG: &str = "!go !draw \t - draw a winner with the given entries. 
+!load \t\t - load from a file extern entries.
+!quit !exit \t - quit the program.
 ";
 
 pub fn run_repl() -> Result<(), io::Error> {
@@ -22,11 +22,13 @@ pub fn run_repl() -> Result<(), io::Error> {
             let content = match std::fs::read_to_string(&new_entry[6..]) {
                 Ok(c) => c,
                 Err(e) => {
-                    eprintln!("ERROR: {e}");
+                    eprintln!("ERROR: {e}\n");
                     continue;
                 }
             };
-            println!("loaded \"{}\".", &new_entry[6..]);
+            if !entries.ends_with("\n") {
+                entries.push_str("\n");
+            }
             entries.push_str(&content);
         } else if new_entry == "!help" {
             println!("{HELP_MSG}");
@@ -41,13 +43,12 @@ pub fn run_repl() -> Result<(), io::Error> {
     }
 
     let picker = picker::Picker::from_str(&entries).expect("error parsing a float.");
-
     print_result(picker.draw());
     Ok(())
 }
 
 pub fn print_result(res: &str) {
-    println!("The chosen was: {}", res)
+    println!("The chosen was:\n\t{}\n", res)
 }
 
 fn get_input(msg: &str) -> io::Result<String> {
