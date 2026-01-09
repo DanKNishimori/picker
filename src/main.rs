@@ -3,13 +3,11 @@ use std::{env::args, fs, str::FromStr};
 use picker::picker::Picker;
 
 fn main() {
-    let arg = match get_arg() {
-        Ok(a) => a,
-        Err(_) => {
-            eprintln!("No argument was given! Type \"picker -h\" to get help.");
-            std::process::exit(1);
-        }
-    };
+    let mut was_gave_no_args = false;
+    let arg = get_arg().unwrap_or_else(|| {
+        was_gave_no_args = true;
+        "--repl".to_string()
+    });
 
     if &arg == "-r" || &arg == "--repl" {
         picker::run_repl().unwrap_or_else(|e| eprintln!("{e}"));
@@ -19,18 +17,17 @@ fn main() {
 
         picker::print_result(picker.draw());
 
-        // std::io::stdin()
-        //     .read_line(&mut String::new())
-        //     .expect("error on reading the pause.");
+        if was_gave_no_args {
+            std::io::stdin()
+                .read_line(&mut String::new())
+                .expect("error on reading the pause.");
+        }
     }
 }
 
-fn get_arg() -> Result<String, ()> {
+fn get_arg() -> Option<String> {
     let mut args = args();
     args.next();
 
-    match args.next() {
-        Some(a) => Ok(a),
-        None => Err(()),
-    }
+    args.next()
 }
